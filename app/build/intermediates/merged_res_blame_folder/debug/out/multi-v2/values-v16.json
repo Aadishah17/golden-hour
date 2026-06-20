@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.goldenhour.app-mergeDebugResources-55:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\shaha\\.gradle\\caches\\8.9\\transforms\\299ec9fad92794bdf7026d697a25c9ed\\transformed\\core-1.10.1\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}

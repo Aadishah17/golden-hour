@@ -1,0 +1,295 @@
+{
+  "communities": {
+    "0": [
+      "app_src_main_java_com_goldenhour_mainactivity_kt",
+      "app_src_main_java_com_goldenhour_ui_navigation_navgraph_kt",
+      "app_src_main_java_com_goldenhour_ui_screens_alertingscreen_kt",
+      "app_src_main_java_com_goldenhour_ui_screens_languageselectionscreen_kt",
+      "app_src_main_java_com_goldenhour_ui_screens_quicktriagescreen_kt",
+      "app_src_main_java_com_goldenhour_ui_theme_theme_kt",
+      "components_commoncomponents_animatedchecklist",
+      "components_commoncomponents_progressstepper",
+      "goldenhour_mainactivity_mainactivity",
+      "goldenhour_mainactivity_mainactivity_oncreate",
+      "navigation_navgraph_goldenhournavgraph",
+      "screens_alertingscreen_alertingscreen",
+      "screens_languageselectionscreen_languageoptionbutton",
+      "screens_languageselectionscreen_languageselectionscreen",
+      "screens_quicktriagescreen_quicktriagescreen",
+      "theme_theme_goldenhourtheme"
+    ],
+    "1": [
+      "app_src_main_java_com_goldenhour_model_models_kt",
+      "app_src_main_java_com_goldenhour_repository_emergencyrepository_kt",
+      "model_models_accidentlocation",
+      "model_models_ambulancestate",
+      "model_models_hospitalinfo",
+      "model_models_triagedata",
+      "repository_emergencyrepository_emergencyrepository",
+      "repository_emergencyrepository_emergencyrepository_getaccidentlocation",
+      "repository_emergencyrepository_emergencyrepository_getambulancetrackingflow",
+      "repository_emergencyrepository_emergencyrepository_getnearesttraumacenter",
+      "repository_emergencyrepository_emergencyrepository_resetemergencystate",
+      "repository_emergencyrepository_emergencyrepository_setvictimcount",
+      "repository_emergencyrepository_emergencyrepository_updatetriagedata",
+      "viewmodel_triageviewmodel_triageviewmodel_resettriage"
+    ],
+    "2": [
+      "app_src_main_java_com_goldenhour_ui_components_commoncomponents_kt",
+      "app_src_main_java_com_goldenhour_ui_screens_goodsamaritanscreen_kt",
+      "app_src_main_java_com_goldenhour_ui_screens_sosscreen_kt",
+      "components_commoncomponents_ambulancetracker",
+      "components_commoncomponents_faqaccordion",
+      "components_commoncomponents_gradientbutton",
+      "components_commoncomponents_infocard",
+      "components_commoncomponents_pulsesosbutton",
+      "components_commoncomponents_victimselector",
+      "screens_goodsamaritanscreen_goodsamaritanscreen",
+      "screens_sosscreen_sosscreen"
+    ],
+    "3": [
+      "app_src_main_java_com_goldenhour_ui_navigation_screen_kt",
+      "navigation_screen_alerting",
+      "navigation_screen_goodsamaritan",
+      "navigation_screen_hospitaldashboard",
+      "navigation_screen_languageselection",
+      "navigation_screen_quicktriage",
+      "navigation_screen_screen",
+      "navigation_screen_sos"
+    ],
+    "4": [
+      "app_src_main_java_com_goldenhour_data_appmodule_kt",
+      "app_src_main_java_com_goldenhour_repository_languagerepository_kt",
+      "data_appmodule_appmodule",
+      "data_appmodule_appmodule_provideemergencyrepository",
+      "data_appmodule_appmodule_providelanguagerepository",
+      "repository_languagerepository_languagerepository",
+      "repository_languagerepository_languagerepository_savelanguage"
+    ],
+    "5": [
+      "app_src_main_java_com_goldenhour_viewmodel_triageviewmodel_kt",
+      "viewmodel_triageviewmodel_triageviewmodel",
+      "viewmodel_triageviewmodel_triageviewmodel_answerquestion",
+      "viewmodel_triageviewmodel_triageviewmodel_gobackquestion",
+      "viewmodel_triageviewmodel_triageviewmodel_togglerecording",
+      "viewmodel_triageviewmodel_triageviewmodel_updatevoicereport"
+    ],
+    "6": [
+      "app_src_main_java_com_goldenhour_ui_screens_hospitaldashboardscreen_kt",
+      "screens_hospitaldashboardscreen_futureaicard",
+      "screens_hospitaldashboardscreen_hospitaldashboardscreen",
+      "screens_hospitaldashboardscreen_triagesummaryitem"
+    ],
+    "7": [
+      "app_src_main_java_com_goldenhour_viewmodel_dashboardviewmodel_kt",
+      "viewmodel_dashboardviewmodel_dashboardviewmodel",
+      "viewmodel_dashboardviewmodel_dashboardviewmodel_resetsession",
+      "viewmodel_dashboardviewmodel_dashboardviewmodel_startambulancesimulation"
+    ],
+    "8": [
+      "app_src_main_java_com_goldenhour_viewmodel_alertingviewmodel_kt",
+      "viewmodel_alertingviewmodel_alertingviewmodel",
+      "viewmodel_alertingviewmodel_alertingviewmodel_startalerting"
+    ],
+    "9": [
+      "app_src_main_java_com_goldenhour_viewmodel_goodsamaritanviewmodel_kt",
+      "viewmodel_goodsamaritanviewmodel_faqitem",
+      "viewmodel_goodsamaritanviewmodel_goodsamaritanviewmodel"
+    ],
+    "10": [
+      "app_src_main_java_com_goldenhour_viewmodel_languageviewmodel_kt",
+      "viewmodel_languageviewmodel_languageviewmodel",
+      "viewmodel_languageviewmodel_languageviewmodel_selectlanguage"
+    ],
+    "11": [
+      "app_src_main_java_com_goldenhour_viewmodel_sosviewmodel_kt",
+      "viewmodel_sosviewmodel_sosviewmodel",
+      "viewmodel_sosviewmodel_sosviewmodel_selectvictimrange"
+    ],
+    "12": [
+      "app_src_main_java_com_goldenhour_goldenhourapp_kt",
+      "goldenhour_goldenhourapp_goldenhourapp"
+    ],
+    "13": [
+      "build_gradle_kts"
+    ],
+    "14": [
+      "settings_gradle_kts"
+    ],
+    "15": [
+      "app_build_gradle_kts"
+    ],
+    "16": [
+      "app_src_main_java_com_goldenhour_ui_theme_color_kt"
+    ],
+    "17": [
+      "app_src_main_java_com_goldenhour_ui_theme_type_kt"
+    ]
+  },
+  "cohesion": {
+    "0": 0.13,
+    "1": 0.18,
+    "2": 0.25,
+    "3": 0.25,
+    "4": 0.29,
+    "5": 0.4,
+    "6": 0.83,
+    "7": 0.5,
+    "8": 0.67,
+    "9": 0.67,
+    "10": 0.67,
+    "11": 0.67,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0
+  },
+  "gods": [
+    {
+      "id": "repository_emergencyrepository_emergencyrepository",
+      "label": "EmergencyRepository",
+      "degree": 8
+    },
+    {
+      "id": "navigation_navgraph_goldenhournavgraph",
+      "label": "GoldenHourNavGraph()",
+      "degree": 8
+    },
+    {
+      "id": "screens_hospitaldashboardscreen_hospitaldashboardscreen",
+      "label": "HospitalDashboardScreen()",
+      "degree": 6
+    },
+    {
+      "id": "viewmodel_triageviewmodel_triageviewmodel",
+      "label": "TriageViewModel",
+      "degree": 6
+    },
+    {
+      "id": "screens_goodsamaritanscreen_goodsamaritanscreen",
+      "label": "GoodSamaritanScreen()",
+      "degree": 5
+    },
+    {
+      "id": "screens_sosscreen_sosscreen",
+      "label": "SOSScreen()",
+      "degree": 5
+    },
+    {
+      "id": "components_commoncomponents_infocard",
+      "label": "InfoCard()",
+      "degree": 4
+    },
+    {
+      "id": "data_appmodule_appmodule",
+      "label": "AppModule",
+      "degree": 3
+    },
+    {
+      "id": "model_models_triagedata",
+      "label": "TriageData",
+      "degree": 3
+    },
+    {
+      "id": "repository_languagerepository_languagerepository",
+      "label": "LanguageRepository",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "HospitalDashboardScreen()",
+      "target": "AmbulanceTracker()",
+      "source_files": [
+        "app/src/main/java/com/goldenhour/ui/screens/HospitalDashboardScreen.kt",
+        "app/src/main/java/com/goldenhour/ui/components/CommonComponents.kt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities; peripheral node `AmbulanceTracker()` unexpectedly reaches hub `HospitalDashboardScreen()`"
+    },
+    {
+      "source": "GoodSamaritanScreen()",
+      "target": "GradientButton()",
+      "source_files": [
+        "app/src/main/java/com/goldenhour/ui/screens/GoodSamaritanScreen.kt",
+        "app/src/main/java/com/goldenhour/ui/components/CommonComponents.kt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `GradientButton()` unexpectedly reaches hub `GoodSamaritanScreen()`"
+    },
+    {
+      "source": "SOSScreen()",
+      "target": "PulseSOSButton()",
+      "source_files": [
+        "app/src/main/java/com/goldenhour/ui/screens/SOSScreen.kt",
+        "app/src/main/java/com/goldenhour/ui/components/CommonComponents.kt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `PulseSOSButton()` unexpectedly reaches hub `SOSScreen()`"
+    },
+    {
+      "source": "HospitalDashboardScreen()",
+      "target": "InfoCard()",
+      "source_files": [
+        "app/src/main/java/com/goldenhour/ui/screens/HospitalDashboardScreen.kt",
+        "app/src/main/java/com/goldenhour/ui/components/CommonComponents.kt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "GoodSamaritanScreen()",
+      "target": "FAQAccordion()",
+      "source_files": [
+        "app/src/main/java/com/goldenhour/ui/screens/GoodSamaritanScreen.kt",
+        "app/src/main/java/com/goldenhour/ui/components/CommonComponents.kt"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; peripheral node `FAQAccordion()` unexpectedly reaches hub `GoodSamaritanScreen()`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `GoldenHourNavGraph()` connect `Core UI and Navigation Framework` to `SOS and Samaritan Components`, `Hospital Dashboard Views`?",
+      "why": "High betweenness centrality (0.074) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `EmergencyRepository` connect `Emergency Models and Repositories` to `Dependency Injection and Configuration`?",
+      "why": "High betweenness centrality (0.054) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 7 inferred relationships involving `GoldenHourNavGraph()` (e.g. with `.onCreate()` and `LanguageSelectionScreen()`) actually correct?",
+      "why": "`GoldenHourNavGraph()` has 7 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 3 inferred relationships involving `HospitalDashboardScreen()` (e.g. with `GoldenHourNavGraph()` and `AmbulanceTracker()`) actually correct?",
+      "why": "`HospitalDashboardScreen()` has 3 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 4 inferred relationships involving `GoodSamaritanScreen()` (e.g. with `GoldenHourNavGraph()` and `InfoCard()`) actually correct?",
+      "why": "`GoodSamaritanScreen()` has 4 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `GoldenHourApp`, `Screen`, `LanguageSelection` to the rest of the system?",
+      "why": "10 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Core UI and Navigation Framework` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.13 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

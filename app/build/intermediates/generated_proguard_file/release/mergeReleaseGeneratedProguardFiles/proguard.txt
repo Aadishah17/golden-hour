@@ -1,0 +1,12 @@
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.AlertingViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.AlertingViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.DashboardViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.DashboardViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.GoodSamaritanViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.GoodSamaritanViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.LanguageViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.LanguageViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.SOSViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.SOSViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.TriageViewModel
+-keep,allowobfuscation,allowshrinking class com.goldenhour.viewmodel.TriageViewModel

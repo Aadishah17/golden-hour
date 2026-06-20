@@ -1,0 +1,20 @@
+{
+  "0": "Core UI and Navigation Framework",
+  "1": "Emergency Models and Repositories",
+  "2": "SOS and Samaritan Components",
+  "3": "Screen Destination Definitions",
+  "4": "Dependency Injection and Configuration",
+  "5": "Patient Triage Business Logic",
+  "6": "Hospital Dashboard Views",
+  "7": "Dashboard State Management",
+  "8": "Alerting State Management",
+  "9": "Samaritan State Management",
+  "10": "Language State Management",
+  "11": "SOS State Management",
+  "12": "Application Entry Point",
+  "13": "Root Build Script",
+  "14": "Project Settings Setup",
+  "15": "App Module Build Config",
+  "16": "Theme Color Scheme",
+  "17": "Theme Typography"
+}
