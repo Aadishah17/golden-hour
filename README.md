@@ -8,11 +8,20 @@ GoldenHour is an Android emergency-response prototype that empowers Good Samarit
 
 ## 📱 Screenshots
 
-| Language Selection | SOS Screen | Quick Triage | Hospital Dashboard |
-| :---: | :---: | :---: | :---: |
-| ![Language Selection](screenshots/01_language.png) | ![SOS Screen](screenshots/02_sos.png) | ![Quick Triage](screenshots/03_triage.png) | ![Hospital Dashboard](screenshots/04_dashboard.png) |
+### 🟢 Pre-Incident & Setup
+| Language Selection | Good Samaritan Law | SOS Screen |
+| :---: | :---: | :---: |
+| ![Language Selection](screenshots/01_language.png) | ![Good Samaritan Law](screenshots/02_gsl.png) | ![SOS Screen](screenshots/02_sos.png) |
 
----
+### 🟡 Incident Triage & Alerting
+| Quick Triage | Alerting Screen |
+| :---: | :---: |
+| ![Quick Triage](screenshots/03_triage.png) | ![Alerting Screen](screenshots/03b_alerting.png) |
+
+### 🏥 Hospital Dashboard
+| Live Tracking & Trauma Team (Top) | AI Severity & Allocation Modules (Bottom) |
+| :---: | :---: |
+| ![Hospital Dashboard](screenshots/04_dashboard.png) | ![Hospital Dashboard AI](screenshots/04b_dashboard_details.png) |
 
 ## ✨ Features
 
