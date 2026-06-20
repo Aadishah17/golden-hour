@@ -8,7 +8,9 @@ GoldenHour is an Android emergency-response prototype that empowers Good Samarit
 
 ## 📱 Screenshots
 
-> *(Add screenshots here)*
+| Language Selection | SOS Screen | Quick Triage | Hospital Dashboard |
+| :---: | :---: | :---: | :---: |
+| ![Language Selection](screenshots/01_language.png) | ![SOS Screen](screenshots/02_sos.png) | ![Quick Triage](screenshots/03_triage.png) | ![Hospital Dashboard](screenshots/04_dashboard.png) |
 
 ---
 
