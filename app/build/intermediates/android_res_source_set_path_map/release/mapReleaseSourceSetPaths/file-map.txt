@@ -1,8 +1,0 @@
-com.goldenhour.app-updated_navigation_xml-0 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\build\generated\updated_navigation_xml\release
-com.goldenhour.app-packageReleaseResources-1 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
-com.goldenhour.app-packageReleaseResources-2 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
-com.goldenhour.app-merged-not-compiled-resources-3 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\build\intermediates\merged-not-compiled-resources\release
-com.goldenhour.app-release-4 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\build\intermediates\merged_res\release\mergeReleaseResources
-com.goldenhour.app-main-5 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\src\main\res
-com.goldenhour.app-release-6 C:\Users\shaha\OneDrive\Desktop\GoldenHour\app\src\release\res
-gradleHome-0 C:\Users\shaha\.gradle

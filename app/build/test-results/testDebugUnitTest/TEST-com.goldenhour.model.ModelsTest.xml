@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.goldenhour.model.ModelsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-06-20T15:33:47.032Z" hostname="JADOO" time="0.032">
-  <properties/>
-  <testcase name="victim ranges match requested labels and simulated counts" classname="com.goldenhour.model.ModelsTest" time="0.001"/>
-  <testcase name="triage is complete after three observations" classname="com.goldenhour.model.ModelsTest" time="0.022"/>
-  <testcase name="default emergency session uses simulated Kamothe MGM data" classname="com.goldenhour.model.ModelsTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
