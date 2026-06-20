@@ -15,16 +15,21 @@ GoldenHour is an Android emergency-response prototype that empowers Good Samarit
 ## ✨ Features
 
 ### 🌐 Multi-Language Support
+
 Launch the app in your preferred language. Language selection is persisted across the session, with all UI strings localised accordingly.
 
 ### 🛡️ Good Samaritan Law (GSL) Protection
+
 Before the user activates an SOS, they are informed of their legal protections under India's Good Samaritan Law:
+
 - **Legal immunity** — protected from civil and criminal liability
 - **Financial protection** — no charges for providing assistance
 - **Anonymity** — identity remains confidential throughout the process
 
 ### 🆘 SOS Activation
+
 The main action screen allows a bystander to:
+
 - View the **detected accident location** (place name, GPS coordinates, landmark)
 - See the **nearest Level I Trauma Centre** and its ETA
 - Select the **number of victims** (1 / 2–5 / 5+)
@@ -32,7 +37,9 @@ The main action screen allows a bystander to:
 - Directly call **108** (Ambulance) or **112** (Emergency) via the dialler
 
 ### 🩺 Quick Triage
+
 Guided triage questionnaire that collects:
+
 - Consciousness status
 - Presence of heavy bleeding
 - Breathing status
@@ -41,18 +48,20 @@ Guided triage questionnaire that collects:
 Triage data is used downstream to pre-prepare the trauma team.
 
 ### 🔔 Alerting Screen
+
 Confirmation that the hospital has been alerted and an ambulance dispatched, showing a live progress indicator.
 
 ### 🏥 Hospital Dashboard
+
 A real-time command-centre view for the receiving hospital (and the bystander), showing:
 
-| Section | Details |
-|---|---|
-| **Hospital Card** | Matched hospital name, trauma level, Green Corridor status |
-| **Live Ambulance Tracking** | Real-time ETA, distance remaining, speed, current road location, and a step-by-step timeline (Dispatched → En Route → Near Scene → Arriving) |
-| **Trauma Team Checklist** | Surgeon, blood bank, emergency bay, radiology, theatre, triage all confirmed ready |
-| **Triage Summary** | Victim count, conscious/bleeding/breathing status, scene report |
-| **AI Simulation Modules** | Severity classification, trauma scoring, hospital allocation, and scene analysis — each with a confidence bar (clearly labelled as prototype/simulation) |
+| Section                    | Details                                                                                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Hospital Card**          | Matched hospital name, trauma level, Green Corridor status                                                                                               |
+| **Live Ambulance Tracking**| Real-time ETA, distance remaining, speed, current road location, and a step-by-step timeline (Dispatched → En Route → Near Scene → Arriving)            |
+| **Trauma Team Checklist**  | Surgeon, blood bank, emergency bay, radiology, theatre, triage all confirmed ready                                                                       |
+| **Triage Summary**         | Victim count, conscious/bleeding/breathing status, scene report                                                                                          |
+| **AI Simulation Modules**  | Severity classification, trauma scoring, hospital allocation, and scene analysis — each with a confidence bar (clearly labelled as prototype/simulation) |
 
 ---
 
@@ -60,7 +69,7 @@ A real-time command-centre view for the receiving hospital (and the bystander), 
 
 The project follows **MVVM + Repository** pattern with Jetpack Compose UI.
 
-```
+```text
 app/src/main/java/com/goldenhour/
 ├── data/               # (data sources — expandable for real API/DB)
 ├── model/
@@ -88,7 +97,7 @@ app/src/main/java/com/goldenhour/
 
 ### Navigation Flow
 
-```
+```text
 Language Selection → Good Samaritan Info → SOS Screen → Quick Triage → Alerting → Hospital Dashboard
                                                                                         ↓
                                                                                     Restart →
@@ -98,21 +107,22 @@ Language Selection → Good Samaritan Info → SOS Screen → Quick Triage → A
 
 ## 🛠️ Tech Stack
 
-| Technology | Usage |
-|---|---|
-| **Kotlin** | Primary language |
-| **Jetpack Compose** | Declarative UI |
-| **Hilt (Dagger)** | Dependency injection (`@Singleton`, `@Inject`) |
-| **Kotlin Coroutines & Flow** | Async state + ambulance telemetry simulation |
-| **Material 3** | Design system |
-| **ViewModel + StateFlow** | Reactive state management |
-| **Navigation Compose** | Screen routing |
+| Technology                    | Usage                                           |
+| ----------------------------- | ----------------------------------------------- |
+| **Kotlin**                    | Primary language                                |
+| **Jetpack Compose**           | Declarative UI                                  |
+| **Hilt (Dagger)**             | Dependency injection (`@Singleton`, `@Inject`)  |
+| **Kotlin Coroutines & Flow**  | Async state + ambulance telemetry simulation    |
+| **Material 3**                | Design system                                   |
+| **ViewModel + StateFlow**     | Reactive state management                       |
+| **Navigation Compose**        | Screen routing                                  |
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Android Studio Hedgehog (or newer)
 - JDK 17+
 - Android SDK 33+
