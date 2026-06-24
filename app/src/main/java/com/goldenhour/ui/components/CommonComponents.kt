@@ -59,7 +59,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
+import android.app.Activity
+import android.view.WindowManager
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -85,14 +89,14 @@ import androidx.compose.ui.unit.sp
 import com.goldenhour.ui.theme.Amber
 import com.goldenhour.ui.theme.EmergencyRed
 import com.goldenhour.ui.theme.EmergencyRedDark
-import com.goldenhour.ui.theme.Navy700
-import com.goldenhour.ui.theme.Navy800
-import com.goldenhour.ui.theme.Navy900
 import com.goldenhour.ui.theme.Outline
 import com.goldenhour.ui.theme.Success
+import com.goldenhour.ui.theme.SurfacePrimary
+import com.goldenhour.ui.theme.SurfaceSecondary
+import com.goldenhour.ui.theme.SurfaceTertiary
 import com.goldenhour.ui.theme.TextMuted
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
 import kotlin.math.sqrt
 
 @Composable
@@ -107,7 +111,7 @@ fun ScreenBackdrop(
                 Brush.verticalGradient(
                     listOf(
                         Color.White,
-                        Navy900,
+                        SurfacePrimary,
                         Color(0xFFFFF7ED)
                     )
                 )
@@ -164,7 +168,7 @@ fun BrandHeader(
                 text = "GoldenHour",
                 style = if (compact) MaterialTheme.typography.titleLarge
                 else MaterialTheme.typography.headlineLarge,
-                color = White,
+                color = TextPrimary,
                 fontWeight = FontWeight.ExtraBold
             )
         }
@@ -203,7 +207,7 @@ fun PremiumCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Navy800.copy(alpha = 0.94f)),
+        colors = CardDefaults.cardColors(containerColor = SurfaceSecondary.copy(alpha = 0.94f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         border = BorderStroke(1.dp, accent?.copy(alpha = 0.5f) ?: Outline)
     ) {
@@ -228,7 +232,7 @@ fun SectionTitle(
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Icon(icon, contentDescription = null, tint = iconColor)
-        Text(title, style = MaterialTheme.typography.titleLarge, color = White)
+        Text(title, style = MaterialTheme.typography.titleLarge, color = TextPrimary)
     }
 }
 
@@ -250,7 +254,7 @@ fun PrimaryButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = EmergencyRed,
             contentColor = Color.White,
-            disabledContainerColor = Navy700,
+            disabledContainerColor = SurfaceTertiary,
             disabledContentColor = TextMuted
         )
     ) {
@@ -289,7 +293,7 @@ fun InfoRow(
     label: String,
     value: String,
     modifier: Modifier = Modifier,
-    valueColor: Color = White
+    valueColor: Color = TextPrimary
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -342,7 +346,7 @@ fun LanguageCard(
     modifier: Modifier = Modifier
 ) {
     val container by animateColorAsState(
-        if (selected) EmergencyRed.copy(alpha = 0.18f) else Navy800,
+        if (selected) EmergencyRed.copy(alpha = 0.18f) else SurfaceSecondary,
         label = "language-card"
     )
     Surface(
@@ -361,11 +365,11 @@ fun LanguageCard(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Column {
-                Text(title, color = White, style = MaterialTheme.typography.titleLarge)
+                Text(title, color = TextPrimary, style = MaterialTheme.typography.titleLarge)
                 Text(subtitle, color = TextSecondary, style = MaterialTheme.typography.bodyMedium)
             }
             Surface(
-                color = if (selected) EmergencyRed else Navy700,
+                color = if (selected) EmergencyRed else SurfaceTertiary,
                 shape = CircleShape,
                 modifier = Modifier.size(30.dp)
             ) {
@@ -396,7 +400,7 @@ fun FaqCard(
         ) {
             Text(
                 question,
-                color = White,
+                color = TextPrimary,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.weight(1f)
             )
@@ -426,21 +430,21 @@ fun FaqCard(
 }
 
 @Composable
-fun VictimSelector(
-    selectedLabel: String,
+fun <T> VictimSelector(
+    selected: T,
     title: String,
-    options: List<String>,
-    onSelect: (String) -> Unit,
+    options: List<Pair<T, String>>,
+    onSelect: (T) -> Unit,
     modifier: Modifier = Modifier
 ) {
     PremiumCard(modifier) {
-        Text(title, style = MaterialTheme.typography.titleMedium, color = White)
+        Text(title, style = MaterialTheme.typography.titleMedium, color = TextPrimary)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(9.dp)
         ) {
-            options.forEach { option ->
-                val selected = option == selectedLabel
+            options.forEach { (option, label) ->
+                val isSelected = option == selected
                 Surface(
                     onClick = { onSelect(option) },
                     modifier = Modifier
@@ -448,14 +452,14 @@ fun VictimSelector(
                         .height(54.dp)
                         .semantics {
                             role = Role.RadioButton
-                            contentDescription = "$title $option"
+                            contentDescription = "$title $label"
                         },
-                    color = if (selected) EmergencyRed else Navy700,
+                    color = if (isSelected) EmergencyRed else SurfaceTertiary,
                     shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(1.dp, if (selected) EmergencyRed else Outline)
+                    border = BorderStroke(1.dp, if (isSelected) EmergencyRed else Outline)
                 ) {
                     Box(contentAlignment = Alignment.Center) {
-                        Text(option, color = if (selected) Color.White else White, fontWeight = FontWeight.Bold)
+                        Text(label, color = if (isSelected) Color.White else TextPrimary, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -540,7 +544,7 @@ fun ProgressStepper(
                 modifier = Modifier.weight(1f)
             ) {
                 Surface(
-                    color = if (index <= activeStep) EmergencyRed else Navy700,
+                    color = if (index <= activeStep) EmergencyRed else SurfaceTertiary,
                     shape = CircleShape,
                     modifier = Modifier.size(34.dp),
                     border = BorderStroke(1.dp, if (index <= activeStep) EmergencyRed else Outline)
@@ -556,7 +560,7 @@ fun ProgressStepper(
                 Spacer(Modifier.height(6.dp))
                 Text(
                     label,
-                    color = if (index <= activeStep) White else TextMuted,
+                    color = if (index <= activeStep) TextPrimary else TextMuted,
                     style = MaterialTheme.typography.labelMedium,
                     textAlign = TextAlign.Center
                 )
@@ -595,7 +599,7 @@ fun ChecklistItem(
         }
         Text(
             text,
-            color = if (completed) White else TextMuted,
+            color = if (completed) TextPrimary else TextMuted,
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = if (completed) FontWeight.SemiBold else FontWeight.Normal
         )
@@ -748,7 +752,7 @@ fun LiveTrackingTimeline(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Surface(
-                        color = if (index <= activeStep) EmergencyRed else Navy700,
+                        color = if (index <= activeStep) EmergencyRed else SurfaceTertiary,
                         shape = CircleShape,
                         modifier = Modifier.size(24.dp),
                         border = BorderStroke(1.dp, if (index <= activeStep) EmergencyRed else Outline)
@@ -768,7 +772,7 @@ fun LiveTrackingTimeline(
                 }
                 Text(
                     text = step,
-                    color = if (index <= activeStep) White else TextMuted,
+                    color = if (index <= activeStep) TextPrimary else TextMuted,
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = if (index == activeStep) FontWeight.ExtraBold else FontWeight.Medium,
                     modifier = Modifier.padding(top = 1.dp)
@@ -808,9 +812,21 @@ fun RoadmapCard(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Icon(Icons.Default.HealthAndSafety, null, tint = Amber)
-                Text(title, color = White, style = MaterialTheme.typography.titleMedium)
+                Text(title, color = TextPrimary, style = MaterialTheme.typography.titleMedium)
             }
             StatusBadge(badge, Amber)
+        }
+    }
+}
+
+@Composable
+fun KeepScreenOn() {
+    val context = LocalContext.current
+    DisposableEffect(Unit) {
+        val activity = context as? Activity
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        onDispose {
+            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
     }
 }

@@ -36,7 +36,7 @@ class DashboardViewModel @Inject constructor(
         startTracking()
     }
 
-    fun startTracking() {
+    private fun startTracking() {
         if (trackingJob?.isActive == true) return
         trackingJob = viewModelScope.launch {
             emergencyRepository.ambulanceTelemetry().collect(_ambulance::emit)

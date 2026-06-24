@@ -26,6 +26,16 @@ class LanguageRepository @Inject constructor(
         }
         .map { preferences -> preferences[languageKey] ?: "en" }
 
+    val isLanguageSaved: Flow<Boolean?> = context.appDataStore.data
+        .map { preferences -> preferences.contains(languageKey) as Boolean? }
+        .catch { error ->
+            if (error is IOException) {
+                emit(null)
+            } else {
+                throw error
+            }
+        }
+
     suspend fun saveLanguage(languageCode: String) {
         context.appDataStore.edit { preferences ->
             preferences[languageKey] = languageCode.takeIf { it in supportedLanguages } ?: "en"

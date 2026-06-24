@@ -50,6 +50,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.goldenhour.model.TriageData
 import com.goldenhour.ui.components.BrandHeader
+import com.goldenhour.ui.components.KeepScreenOn
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import com.goldenhour.ui.components.ConstrainedContent
 import com.goldenhour.ui.components.PremiumCard
 import com.goldenhour.ui.components.PrimaryButton
@@ -60,12 +63,12 @@ import com.goldenhour.ui.components.SecondaryButton
 import com.goldenhour.ui.components.SectionTitle
 import com.goldenhour.ui.theme.Amber
 import com.goldenhour.ui.theme.EmergencyRed
-import com.goldenhour.ui.theme.Navy700
 import com.goldenhour.ui.theme.Outline
 import com.goldenhour.ui.theme.Success
+import com.goldenhour.ui.theme.SurfaceTertiary
 import com.goldenhour.ui.theme.TextMuted
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
 import com.goldenhour.utils.AppStrings
 import com.goldenhour.utils.stringsFor
 import com.goldenhour.viewmodel.TriageViewModel
@@ -77,6 +80,7 @@ fun QuickTriageScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    KeepScreenOn()
     val language by viewModel.selectedLanguage.collectAsStateWithLifecycle()
     val triage by viewModel.triage.collectAsStateWithLifecycle()
     val questionIndex by viewModel.questionIndex.collectAsStateWithLifecycle()
@@ -104,7 +108,7 @@ fun QuickTriageScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = TextPrimary)
                     }
                     BrandHeader(compact = true, modifier = Modifier.weight(1f))
                 }
@@ -114,7 +118,7 @@ fun QuickTriageScreen(
                 Spacer(Modifier.height(16.dp))
                 Text(
                     strings.triageTitle,
-                    color = White,
+                    color = TextPrimary,
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.ExtraBold,
                     textAlign = TextAlign.Center,
@@ -145,7 +149,7 @@ fun QuickTriageScreen(
                     ) {
                         SectionTitle(strings.triageTitle, Icons.Default.MedicalServices, modifier = Modifier.weight(1f))
                         Text(
-                            "${questionIndex + 1}/${questions.size}",
+                            strings.questionProgressFormat.format(questionIndex + 1, questions.size),
                             color = Amber,
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
@@ -157,11 +161,11 @@ fun QuickTriageScreen(
                             .fillMaxWidth()
                             .height(8.dp),
                         color = EmergencyRed,
-                        trackColor = Navy700
+                        trackColor = SurfaceTertiary
                     )
                     Text(
                         questions[questionIndex],
-                        color = White,
+                        color = TextPrimary,
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.ExtraBold,
                         modifier = Modifier.padding(top = 6.dp)
@@ -265,11 +269,15 @@ private fun AnswerButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val haptic = LocalHapticFeedback.current
     Surface(
-        onClick = onClick,
+        onClick = {
+            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            onClick()
+        },
         modifier = modifier.height(72.dp),
         shape = RoundedCornerShape(22.dp),
-        color = if (selected) color else Navy700,
+        color = if (selected) color else SurfaceTertiary,
         border = BorderStroke(if (selected) 2.dp else 1.dp, if (selected) color else Outline)
     ) {
         Row(
@@ -285,7 +293,7 @@ private fun AnswerButton(
             }
             Text(
                 text,
-                color = if (selected) androidx.compose.ui.graphics.Color.White else White,
+                color = if (selected) androidx.compose.ui.graphics.Color.White else TextPrimary,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Black
             )
@@ -322,7 +330,7 @@ private fun VoiceMicButton(
     Surface(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
-        color = if (isListening) EmergencyRed.copy(alpha = 0.16f) else Navy700,
+        color = if (isListening) EmergencyRed.copy(alpha = 0.16f) else SurfaceTertiary,
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(1.dp, if (isListening) EmergencyRed else Outline)
     ) {
@@ -348,7 +356,7 @@ private fun VoiceMicButton(
             }
             Text(
                 label,
-                color = White,
+                color = TextPrimary,
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )

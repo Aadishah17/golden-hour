@@ -36,10 +36,11 @@ import com.goldenhour.ui.components.ScreenBackdrop
 import com.goldenhour.ui.components.SectionTitle
 import com.goldenhour.ui.theme.Amber
 import com.goldenhour.ui.theme.EmergencyRed
-import com.goldenhour.ui.theme.Navy700
+import com.goldenhour.ui.components.KeepScreenOn
+import com.goldenhour.ui.theme.SurfaceTertiary
 import com.goldenhour.ui.theme.TextMuted
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
 import com.goldenhour.utils.stringsFor
 import com.goldenhour.viewmodel.AlertingViewModel
 
@@ -49,6 +50,7 @@ fun AlertingScreen(
     onFinished: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    KeepScreenOn()
     val language by viewModel.selectedLanguage.collectAsStateWithLifecycle()
     val progress by viewModel.progress.collectAsStateWithLifecycle()
     val completedSteps by viewModel.completedSteps.collectAsStateWithLifecycle()
@@ -88,13 +90,13 @@ fun AlertingScreen(
                     progress = { progress },
                     modifier = Modifier.height(92.dp),
                     color = EmergencyRed,
-                    trackColor = Navy700,
+                    trackColor = SurfaceTertiary,
                     strokeWidth = 8.dp
                 )
                 Spacer(Modifier.height(18.dp))
                 Text(
                     strings.alertingTitle,
-                    color = White,
+                    color = TextPrimary,
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.ExtraBold,
                     textAlign = TextAlign.Center,
@@ -125,7 +127,7 @@ fun AlertingScreen(
                         .fillMaxWidth()
                         .height(10.dp),
                     color = EmergencyRed,
-                    trackColor = Navy700
+                    trackColor = SurfaceTertiary
                 )
 
                 Spacer(Modifier.height(22.dp))

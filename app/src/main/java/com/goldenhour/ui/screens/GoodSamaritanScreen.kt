@@ -41,7 +41,7 @@ import com.goldenhour.ui.theme.Amber
 import com.goldenhour.ui.theme.EmergencyRed
 import com.goldenhour.ui.theme.Success
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.utils.stringsFor
 import com.goldenhour.viewmodel.GoodSamaritanViewModel
 
@@ -70,7 +70,7 @@ fun GoodSamaritanScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = TextPrimary)
                     }
                     BrandHeader(
                         compact = true,
@@ -90,7 +90,7 @@ fun GoodSamaritanScreen(
                 Text(
                     strings.protectedTitle,
                     style = MaterialTheme.typography.headlineLarge,
-                    color = White,
+                    color = TextPrimary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -142,7 +142,7 @@ fun GoodSamaritanScreen(
                 Text(
                     strings.faqTitle,
                     style = MaterialTheme.typography.titleLarge,
-                    color = White,
+                    color = TextPrimary,
                     modifier = Modifier.padding(top = 28.dp, bottom = 12.dp)
                 )
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {

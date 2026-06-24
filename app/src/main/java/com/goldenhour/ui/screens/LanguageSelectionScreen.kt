@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +30,7 @@ import com.goldenhour.ui.components.ScreenBackdrop
 import com.goldenhour.ui.theme.Amber
 import com.goldenhour.ui.theme.TextMuted
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.utils.stringsFor
 import com.goldenhour.viewmodel.LanguageViewModel
 
@@ -40,7 +41,18 @@ fun LanguageSelectionScreen(
     modifier: Modifier = Modifier
 ) {
     val selectedLanguage by viewModel.selectedLanguage.collectAsStateWithLifecycle()
+    val isSaved by viewModel.isLanguageSaved.collectAsStateWithLifecycle()
     val strings = stringsFor(selectedLanguage)
+
+    LaunchedEffect(isSaved) {
+        if (isSaved == false) {
+            val defaultLang = java.util.Locale.getDefault().language
+            if (defaultLang == "hi" || defaultLang == "mr") {
+                viewModel.selectLanguage(defaultLang)
+                onContinue()
+            }
+        }
+    }
 
     ScreenBackdrop(modifier) {
         Column(
@@ -75,7 +87,7 @@ fun LanguageSelectionScreen(
                 Text(
                     strings.languagePrompt,
                     style = MaterialTheme.typography.titleLarge,
-                    color = White,
+                    color = TextPrimary,
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(Modifier.height(14.dp))

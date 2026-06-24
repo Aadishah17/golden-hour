@@ -28,6 +28,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import kotlin.math.sqrt
 import com.goldenhour.model.VictimRange
 import com.goldenhour.ui.components.BrandHeader
 import com.goldenhour.ui.components.ConstrainedContent
@@ -44,8 +53,8 @@ import com.goldenhour.ui.theme.Amber
 import com.goldenhour.ui.theme.EmergencyRed
 import com.goldenhour.ui.theme.Success
 import com.goldenhour.ui.theme.TextMuted
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
 import com.goldenhour.utils.openDialer
 import com.goldenhour.utils.stringsFor
 import com.goldenhour.viewmodel.SOSViewModel
@@ -60,6 +69,13 @@ fun SOSScreen(
     val session by viewModel.session.collectAsStateWithLifecycle()
     val strings = stringsFor(language)
     val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
+
+    ShakeDetector {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        viewModel.activateSos()
+        onSos()
+    }
 
     ScreenBackdrop(modifier) {
         Column(
@@ -89,7 +105,7 @@ fun SOSScreen(
                     SectionTitle(strings.locationTitle, Icons.Default.LocationOn)
                     Text(
                         session.location.placeName,
-                        color = White,
+                        color = TextPrimary,
                         style = MaterialTheme.typography.titleLarge
                     )
                     Text(
@@ -108,7 +124,7 @@ fun SOSScreen(
                     SectionTitle(strings.traumaCentreTitle, Icons.Default.LocalHospital, iconColor = Success)
                     Text(
                         session.hospital.name,
-                        color = White,
+                        color = TextPrimary,
                         style = MaterialTheme.typography.titleLarge
                     )
                     Text(
@@ -122,17 +138,15 @@ fun SOSScreen(
                 }
                 Spacer(Modifier.height(13.dp))
                 VictimSelector(
-                    selectedLabel = session.victimRange.label,
+                    selected = session.victimRange,
                     title = strings.victimCount,
-                    options = VictimRange.entries.map(VictimRange::label),
-                    onSelect = { label ->
-                        VictimRange.entries.firstOrNull { it.label == label }
-                            ?.let(viewModel::selectVictimRange)
-                    }
+                    options = VictimRange.entries.map { it to it.label },
+                    onSelect = { range -> viewModel.selectVictimRange(range) }
                 )
                 Spacer(Modifier.height(16.dp))
                 PulsingSosButton(
                     onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         viewModel.activateSos()
                         onSos()
                     },
@@ -178,3 +192,44 @@ fun SOSScreen(
         }
     }
 }
+
+@Composable
+private fun ShakeDetector(
+    onShake: () -> Unit
+) {
+    val context = LocalContext.current
+    DisposableEffect(Unit) {
+        val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        val accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        var shakeTimestamp: Long = 0
+        val sensorListener = object : SensorEventListener {
+            override fun onSensorChanged(event: SensorEvent) {
+                val x = event.values[0]
+                val y = event.values[1]
+                val z = event.values[2]
+
+                val gX = x / SensorManager.GRAVITY_EARTH
+                val gY = y / SensorManager.GRAVITY_EARTH
+                val gZ = z / SensorManager.GRAVITY_EARTH
+
+                val gForce = sqrt(gX * gX + gY * gY + gZ * gZ)
+
+                if (gForce > 2.5f) {
+                    val now = System.currentTimeMillis()
+                    if (shakeTimestamp + 1200 > now) return
+                    shakeTimestamp = now
+                    onShake()
+                }
+            }
+
+            override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
+        }
+        if (accelerometer != null) {
+            sensorManager.registerListener(sensorListener, accelerometer, SensorManager.SENSOR_DELAY_UI)
+        }
+        onDispose {
+            sensorManager.unregisterListener(sensorListener)
+        }
+    }
+}
+

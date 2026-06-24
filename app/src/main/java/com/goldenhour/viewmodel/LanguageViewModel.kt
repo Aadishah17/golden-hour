@@ -17,6 +17,9 @@ class LanguageViewModel @Inject constructor(
     val selectedLanguage: StateFlow<String> = languageRepository.selectedLanguage
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "en")
 
+    val isLanguageSaved: StateFlow<Boolean?> = languageRepository.isLanguageSaved
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
     fun selectLanguage(languageCode: String) {
         viewModelScope.launch { languageRepository.saveLanguage(languageCode) }
     }

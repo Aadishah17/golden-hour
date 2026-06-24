@@ -54,9 +54,10 @@ import com.goldenhour.ui.theme.Sky
 import com.goldenhour.ui.theme.Success
 import com.goldenhour.ui.theme.TextMuted
 import com.goldenhour.ui.theme.TextSecondary
-import com.goldenhour.ui.theme.White
+import com.goldenhour.ui.theme.TextPrimary
 import com.goldenhour.utils.AppStrings
 import com.goldenhour.utils.stringsFor
+import com.goldenhour.ui.components.KeepScreenOn
 import com.goldenhour.viewmodel.DashboardViewModel
 import java.util.Locale
 
@@ -66,6 +67,7 @@ fun HospitalDashboardScreen(
     onRestart: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    KeepScreenOn()
     val language by viewModel.selectedLanguage.collectAsStateWithLifecycle()
     val session by viewModel.session.collectAsStateWithLifecycle()
     val ambulance by viewModel.ambulance.collectAsStateWithLifecycle()
@@ -100,9 +102,7 @@ fun HospitalDashboardScreen(
         else -> 0.74f
     }
 
-    LaunchedEffect(Unit) {
-        viewModel.startTracking()
-    }
+
 
     ScreenBackdrop(modifier) {
         Column(
@@ -126,7 +126,7 @@ fun HospitalDashboardScreen(
 
                 Text(
                     strings.hospitalAlerted,
-                    color = White,
+                    color = TextPrimary,
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.ExtraBold,
                     textAlign = TextAlign.Center,
@@ -150,7 +150,7 @@ fun HospitalDashboardScreen(
                     SectionTitle(strings.hospitalAlerted, Icons.Default.LocalHospital, iconColor = Success)
                     Text(
                         "🏥 ${session.hospital.name}",
-                        color = White,
+                        color = TextPrimary,
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.ExtraBold
                     )
@@ -176,7 +176,7 @@ fun HospitalDashboardScreen(
                             SectionTitle(strings.liveTracking, Icons.Default.Route)
                             Text(
                                 strings.ambulanceOnWay,
-                                color = White,
+                                color = TextPrimary,
                                 style = MaterialTheme.typography.titleLarge,
                                 fontWeight = FontWeight.ExtraBold
                             )
@@ -214,13 +214,13 @@ fun HospitalDashboardScreen(
                             }
                             Column(horizontalAlignment = Alignment.End) {
                                 Text(strings.distanceRemaining, color = TextSecondary, style = MaterialTheme.typography.labelLarge)
-                                Text(remainingText, color = White, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.ExtraBold)
+                                Text(remainingText, color = TextPrimary, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.ExtraBold)
                                 Text(strings.lastUpdated, color = TextMuted, style = MaterialTheme.typography.bodySmall)
                             }
                         }
                     }
                     AmbulanceRoute(progress = ambulance.progress)
-                    InfoRow(strings.currentLocation, ambulance.currentLocation, valueColor = White)
+                    InfoRow(strings.currentLocation, ambulance.currentLocation, valueColor = TextPrimary)
                     InfoRow(strings.speed, "${ambulance.speedKph} ${strings.speedUnit}", valueColor = Amber)
                     InfoRow(strings.destination, session.location.landmark, valueColor = TextSecondary)
                     LiveTrackingTimeline(
@@ -360,7 +360,7 @@ private fun AiModuleCard(
                 verticalAlignment = Alignment.Top
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(title, color = White, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.ExtraBold)
+                    Text(title, color = TextPrimary, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.ExtraBold)
                     Text(value, color = accent, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Black)
                 }
                 StatusBadge(badge, accent)

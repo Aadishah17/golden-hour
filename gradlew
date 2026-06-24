@@ -114,7 +114,8 @@ case "$( uname )" in                #(
   NONSTOP* )        nonstop=true ;;
 esac
 
-
+# Set local JAVA_HOME to JDK 21 as required by Gradle 9.4.1+
+JAVA_HOME="C:/Program Files/Android/openjdk/jdk-21.0.8"
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
