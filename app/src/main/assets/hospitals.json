@@ -1,0 +1,149 @@
+[
+  {
+    "name": "MGM Hospital, Kamothe",
+    "lat": 19.0253,
+    "lng": 73.0934,
+    "traumaLevel": 1,
+    "phone": "+91-22-27437900"
+  },
+  {
+    "name": "Apollo Hospital, Belapur",
+    "lat": 19.0185,
+    "lng": 73.0298,
+    "traumaLevel": 1,
+    "phone": "+91-22-33503350"
+  },
+  {
+    "name": "KEM Hospital, Parel",
+    "lat": 19.0028,
+    "lng": 72.8421,
+    "traumaLevel": 1,
+    "phone": "+91-22-24107000"
+  },
+  {
+    "name": "Sion Hospital (LTMGH), Sion",
+    "lat": 19.0358,
+    "lng": 72.8601,
+    "traumaLevel": 1,
+    "phone": "+91-22-24076381"
+  },
+  {
+    "name": "Sir J.J. Group of Hospitals, Byculla",
+    "lat": 18.9632,
+    "lng": 72.8346,
+    "traumaLevel": 1,
+    "phone": "+91-22-23735555"
+  },
+  {
+    "name": "D.Y. Patil Hospital, Nerul",
+    "lat": 19.0308,
+    "lng": 73.0175,
+    "traumaLevel": 1,
+    "phone": "+91-22-27783000"
+  },
+  {
+    "name": "Fortis Hospital, Vashi",
+    "lat": 19.0734,
+    "lng": 72.9976,
+    "traumaLevel": 2,
+    "phone": "+91-22-67917200"
+  },
+  {
+    "name": "Jupiter Hospital, Thane",
+    "lat": 19.2012,
+    "lng": 72.9645,
+    "traumaLevel": 1,
+    "phone": "+91-22-21725555"
+  },
+  {
+    "name": "Sassoon General Hospital, Pune",
+    "lat": 18.5276,
+    "lng": 73.8732,
+    "traumaLevel": 1,
+    "phone": "+91-20-26128000"
+  },
+  {
+    "name": "Ruby Hall Clinic, Pune",
+    "lat": 18.5321,
+    "lng": 73.8778,
+    "traumaLevel": 1,
+    "phone": "+91-20-66455100"
+  },
+  {
+    "name": "Sahyadri Super Speciality Hospital, Deccan",
+    "lat": 18.5142,
+    "lng": 73.8398,
+    "traumaLevel": 1,
+    "phone": "+91-20-67213000"
+  },
+  {
+    "name": "Noble Hospital, Hadapsar",
+    "lat": 18.5034,
+    "lng": 73.9268,
+    "traumaLevel": 2,
+    "phone": "+91-20-66227777"
+  },
+  {
+    "name": "Government Medical College, Nagpur",
+    "lat": 21.1278,
+    "lng": 79.0984,
+    "traumaLevel": 1,
+    "phone": "+91-712-2721522"
+  },
+  {
+    "name": "Government Medical College, Aurangabad",
+    "lat": 19.8945,
+    "lng": 75.3218,
+    "traumaLevel": 1,
+    "phone": "+91-240-2402412"
+  },
+  {
+    "name": "Government Medical College, Miraj",
+    "lat": 16.8224,
+    "lng": 74.6465,
+    "traumaLevel": 2,
+    "phone": "+91-233-2232090"
+  },
+  {
+    "name": "Chhatrapati Pramila Raje (CPR) Hospital, Kolhapur",
+    "lat": 16.7028,
+    "lng": 74.2256,
+    "traumaLevel": 2,
+    "phone": "+91-231-2641177"
+  },
+  {
+    "name": "Civil Hospital, Nashik",
+    "lat": 20.0056,
+    "lng": 73.7891,
+    "traumaLevel": 2,
+    "phone": "+91-253-2576106"
+  },
+  {
+    "name": "Civil Hospital, Satara",
+    "lat": 17.6894,
+    "lng": 73.9922,
+    "traumaLevel": 2,
+    "phone": "+91-2162-234201"
+  },
+  {
+    "name": "Sub-District Hospital, Pen",
+    "lat": 18.7303,
+    "lng": 73.0858,
+    "traumaLevel": 2,
+    "phone": "+91-2143-252033"
+  },
+  {
+    "name": "Civil Hospital, Alibag",
+    "lat": 18.6583,
+    "lng": 72.8784,
+    "traumaLevel": 2,
+    "phone": "+91-2141-222080"
+  },
+  {
+    "name": "Sub-District Hospital, Chiplun",
+    "lat": 17.5342,
+    "lng": 73.5186,
+    "traumaLevel": 2,
+    "phone": "+91-2355-252835"
+  }
+]

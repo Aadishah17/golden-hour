@@ -30,6 +30,21 @@ class SOSViewModel @Inject constructor(
         soundEffects.selection()
     }
 
+    fun selectHospital(hospital: com.goldenhour.model.HospitalInfo) {
+        emergencyRepository.selectHospital(hospital)
+        soundEffects.selection()
+    }
+
+    fun updateLocation(context: android.content.Context, lat: Double, lng: Double, placeName: String) {
+        emergencyRepository.updateLocationAndMatchHospitals(context, lat, lng, placeName)
+    }
+
+    fun currentLocationFlow(context: android.content.Context) = emergencyRepository.currentLocation(context)
+
+    suspend fun reverseGeocode(lat: Double, lng: Double): String {
+        return emergencyRepository.reverseGeocode(lat, lng)
+    }
+
     fun activateSos() {
         soundEffects.alert()
     }

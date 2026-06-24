@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
@@ -36,6 +37,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.goldenhour.model.TriageData
 import com.goldenhour.ui.components.AmbulanceRoute
+import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.draw.clip
 import com.goldenhour.ui.components.BrandHeader
 import com.goldenhour.ui.components.ChecklistItem
 import com.goldenhour.ui.components.ConstrainedContent
@@ -211,6 +215,11 @@ fun HospitalDashboardScreen(
                                     style = MaterialTheme.typography.displaySmall,
                                     fontWeight = FontWeight.Black
                                 )
+                                Text(
+                                    "ETA may vary — traffic info unavailable",
+                                    color = TextMuted,
+                                    style = MaterialTheme.typography.labelSmall
+                                )
                             }
                             Column(horizontalAlignment = Alignment.End) {
                                 Text(strings.distanceRemaining, color = TextSecondary, style = MaterialTheme.typography.labelLarge)
@@ -244,6 +253,29 @@ fun HospitalDashboardScreen(
                     InfoRow(strings.questionConscious, session.triage.consciousLabel(strings), valueColor = triageColor(session.triage.isConscious))
                     InfoRow(strings.questionBleeding, session.triage.bleedingLabel(strings), valueColor = triageColor(session.triage.hasHeavyBleeding))
                     InfoRow(strings.questionBreathing, session.triage.breathingLabel(strings), valueColor = triageColor(session.triage.isBreathing))
+                    if (session.triage.scenePhoto != null) {
+                        Spacer(Modifier.height(6.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Image(
+                                bitmap = session.triage.scenePhoto!!.asImageBitmap(),
+                                contentDescription = "Captured scene photo thumbnail",
+                                modifier = Modifier
+                                    .size(80.dp)
+                                    .clip(RoundedCornerShape(12.dp)),
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                            )
+                            Text(
+                                strings.photoCaptured,
+                                color = Success,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        }
+                    }
                     if (session.triage.sceneReport.isNotBlank()) {
                         Text(
                             session.triage.sceneReport,
@@ -261,19 +293,26 @@ fun HospitalDashboardScreen(
                         color = TextMuted,
                         style = MaterialTheme.typography.bodyMedium
                     )
+                    val dynamicSeverity = session.triage.rtsSeverity
+                    val dynamicSeverityConfidence = when (session.triage.rtsScore) {
+                        12 -> 0.74f
+                        in 8..11 -> 0.84f
+                        in 4..7 -> 0.92f
+                        else -> 0.98f
+                    }
                     AiModuleCard(
                         title = "🧠 ${strings.aiSeverity}",
-                        value = strings.severityResult,
-                        detail = strings.offlineComputed,
-                        confidence = severityConfidence,
+                        value = dynamicSeverity,
+                        detail = "Physiological risk level",
+                        confidence = dynamicSeverityConfidence,
                         accent = EmergencyRed,
                         badge = strings.activeSimulation
                     )
                     AiModuleCard(
                         title = "🧠 ${strings.aiScoring}",
-                        value = strings.traumaScoreResult,
-                        detail = "${strings.victimCount}: ${session.victimRange.label} · ${strings.triageSummary}",
-                        confidence = 0.82f,
+                        value = "RTS: ${session.triage.rtsScore}/12",
+                        detail = "Revised Trauma Score (GCS + RR + SBP)",
+                        confidence = 1.0f,
                         accent = Amber,
                         badge = strings.activeSimulation
                     )

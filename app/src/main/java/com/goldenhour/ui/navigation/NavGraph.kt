@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.goldenhour.ui.screens.AlertingScreen
+import com.goldenhour.ui.screens.FirstAidScreen
 import com.goldenhour.ui.screens.GoodSamaritanScreen
 import com.goldenhour.ui.screens.HospitalDashboardScreen
 import com.goldenhour.ui.screens.LanguageSelectionScreen
@@ -67,6 +68,13 @@ fun GoldenHourNavGraph(
         }
         composable(Screen.Triage.route) {
             QuickTriageScreen(
+                viewModel = hiltViewModel(),
+                onContinue = { navController.navigate(Screen.FirstAid.route) },
+                onBack = { navController.popBackStack() }
+            )
+        }
+        composable(Screen.FirstAid.route) {
+            FirstAidScreen(
                 viewModel = hiltViewModel(),
                 onContinue = { navController.navigate(Screen.Alerting.route) },
                 onBack = { navController.popBackStack() }

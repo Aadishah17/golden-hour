@@ -23,14 +23,22 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material3.Icon
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -58,6 +66,7 @@ import com.goldenhour.ui.components.PremiumCard
 import com.goldenhour.ui.components.PrimaryButton
 import com.goldenhour.ui.components.ProgressStepper
 import com.goldenhour.ui.components.PrototypeBadge
+import com.goldenhour.ui.components.StatusBadge
 import com.goldenhour.ui.components.ScreenBackdrop
 import com.goldenhour.ui.components.SecondaryButton
 import com.goldenhour.ui.components.SectionTitle
@@ -203,6 +212,51 @@ fun QuickTriageScreen(
                         maxLines = 5,
                         shape = RoundedCornerShape(20.dp)
                     )
+
+                    HorizontalDivider(color = Outline, modifier = Modifier.padding(vertical = 8.dp))
+                    SectionTitle(strings.capturePhoto, Icons.Default.CameraAlt)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(14.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val cameraLauncher = rememberLauncherForActivityResult(
+                            contract = ActivityResultContracts.TakePicturePreview()
+                        ) { bitmap ->
+                            if (bitmap != null) {
+                                viewModel.updateScenePhoto(bitmap)
+                            }
+                        }
+
+                        if (triage.scenePhoto != null) {
+                            Image(
+                                bitmap = triage.scenePhoto!!.asImageBitmap(),
+                                contentDescription = "Captured scene photo",
+                                modifier = Modifier
+                                    .size(82.dp)
+                                    .clip(RoundedCornerShape(16.dp)),
+                                contentScale = ContentScale.Crop
+                            )
+                            Column {
+                                StatusBadge(strings.photoCaptured, Success, icon = Icons.Default.CheckCircle)
+                                Spacer(Modifier.height(6.dp))
+                                SecondaryButton(
+                                    text = "Retake",
+                                    onClick = { cameraLauncher.launch(null) },
+                                    modifier = Modifier.height(38.dp)
+                                )
+                            }
+                        } else {
+                            PrimaryButton(
+                                text = strings.capturePhoto,
+                                onClick = { cameraLauncher.launch(null) },
+                                icon = Icons.Default.CameraAlt,
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                    }
+
+                    Spacer(Modifier.height(6.dp))
                     Text(
                         strings.triageSimulationNotice,
                         color = TextMuted,

@@ -116,7 +116,22 @@ data class AppStrings(
     val aiScoring: String,
     val aiAllocation: String,
     val aiScene: String,
-    val restart: String
+    val restart: String,
+    val firstAidTitle: String,
+    val firstAidSubtitle: String,
+    val firstAidConsciousTitle: String,
+    val firstAidConsciousText: String,
+    val firstAidBleedingTitle: String,
+    val firstAidBleedingText: String,
+    val firstAidBreathingTitle: String,
+    val firstAidBreathingText: String,
+    val firstAidConsciousOk: String,
+    val firstAidBleedingOk: String,
+    val firstAidBreathingOk: String,
+    val firstAidDisclaimer: String,
+    val capturePhoto: String,
+    val photoCaptured: String,
+    val nearbyHospitalsTitle: String
 )
 
 private val English = AppStrings(
@@ -235,7 +250,22 @@ private val English = AppStrings(
     aiScoring = "AI Trauma Scoring",
     aiAllocation = "AI Hospital Allocation",
     aiScene = "AI Accident Scene Analysis",
-    restart = "Restart demonstration"
+    restart = "Restart demonstration",
+    firstAidTitle = "First Aid Instructions",
+    firstAidSubtitle = "Perform these steps immediately while waiting.",
+    firstAidConsciousTitle = "Consciousness Check",
+    firstAidConsciousText = "Do NOT move them unless there is immediate danger. Check airway. Recovery position if breathing.",
+    firstAidBleedingTitle = "Bleeding Control",
+    firstAidBleedingText = "Apply firm, continuous pressure with any clean cloth. Do NOT remove the cloth if soaked — add another layer.",
+    firstAidBreathingTitle = "Breathing & CPR",
+    firstAidBreathingText = "Begin CPR immediately: 30 chest compressions, 2 rescue breaths. Repeat continuously.",
+    firstAidConsciousOk = "Victim is conscious. Keep them calm and warm.",
+    firstAidBleedingOk = "No heavy bleeding observed.",
+    firstAidBreathingOk = "Victim is breathing normally.",
+    firstAidDisclaimer = "Academic medical advice only. Good Samaritan assistance is legally protected.",
+    capturePhoto = "Capture Scene Photo",
+    photoCaptured = "Scene photo captured",
+    nearbyHospitalsTitle = "Nearby Trauma Centres (Select to Alert)"
 )
 
 private val Hindi = English.copy(
@@ -333,7 +363,22 @@ private val Hindi = English.copy(
     triageSummary = "ट्राइएज सारांश",
     roadmapTitle = "भविष्य की AI रूपरेखा",
     futureFeature = "भविष्य की सुविधा",
-    restart = "प्रदर्शन फिर शुरू करें"
+    restart = "प्रदर्शन फिर शुरू करें",
+    firstAidTitle = "प्राथमिक चिकित्सा निर्देश",
+    firstAidSubtitle = "प्रतीक्षा करते समय तुरंत इन कदमों का पालन करें।",
+    firstAidConsciousTitle = "चेतना की जाँच",
+    firstAidConsciousText = "जब तक तत्काल खतरा न हो, उन्हें न हिलाएं। वायुमार्ग की जांच करें। यदि सांस ले रहे हैं तो रिकवरी पोजीशन में रखें।",
+    firstAidBleedingTitle = "रक्तस्राव नियंत्रण",
+    firstAidBleedingText = "साफ कपड़े से मजबूत, निरंतर दबाव डालें। यदि कपड़ा भीग जाए तो उसे न हटाएं — ऊपर से एक और परत जोड़ें।",
+    firstAidBreathingTitle = "साँस और सीपीआर (CPR)",
+    firstAidBreathingText = "तुरंत सीपीआर शुरू करें: 30 छाती के दबाव के बाद 2 साँसें। लगातार दोहराएं।",
+    firstAidConsciousOk = "पीड़ित होश में है। उन्हें शांत और गर्म रखें।",
+    firstAidBleedingOk = "कोई भारी रक्तस्राव नहीं देखा गया।",
+    firstAidBreathingOk = "पीड़ित सामान्य रूप से सांस ले रहा है।",
+    firstAidDisclaimer = "केवल शैक्षणिक चिकित्सा सलाह। गुड समैरिटन सहायता कानूनी रूप से सुरक्षित है।",
+    capturePhoto = "दुर्घटना स्थल की फोटो लें",
+    photoCaptured = "दुर्घटना स्थल की फोटो ली गई",
+    nearbyHospitalsTitle = "निकटतम ट्रॉमा सेंटर (अलर्ट करने के लिए चुनें)"
 )
 
 private val Marathi = English.copy(
@@ -431,7 +476,22 @@ private val Marathi = English.copy(
     triageSummary = "ट्रायेज सारांश",
     roadmapTitle = "भविष्यातील AI आराखडा",
     futureFeature = "भविष्यातील सुविधा",
-    restart = "प्रात्यक्षिक पुन्हा सुरू करा"
+    restart = "प्रात्यक्षिक पुन्हा सुरू करा",
+    firstAidTitle = "प्रथमोपचार मार्गदर्शक",
+    firstAidSubtitle = "प्रतीक्षा करत असताना ताबडतोब या चरणांचे पालन करा.",
+    firstAidConsciousTitle = "चेतना तपासणी",
+    firstAidConsciousText = "तातडीचा धोका असल्याशिवाय त्यांना हलवू नका. श्वासनलिका तपासा. श्वास घेत असल्यास रिकव्हरी पोझिशनमध्ये ठेवा.",
+    firstAidBleedingTitle = "रक्तस्राव नियंत्रण",
+    firstAidBleedingText = "स्वच्छ कपड्याने घट्ट, सतत दाब द्या. कपडा भिजल्यास तो काढू नका — वरून दुसरा थर लावा.",
+    firstAidBreathingTitle = "श्वास आणि सीपीआर (CPR)",
+    firstAidBreathingText = "ताबडतोब सीपीआर सुरू करा: ३० वेळा छाती दाबणे आणि २ वेळा कृत्रिम श्वास देणे. सतत पुनरावृत्ती करा.",
+    firstAidConsciousOk = "पीडित शुद्धीवर आहे. त्यांना शांत आणि उबदार ठेवा.",
+    firstAidBleedingOk = "कोणताही गंभीर रक्तस्राव आढळला नाही.",
+    firstAidBreathingOk = "पीडित सामान्यपणे श्वास घेत आहे.",
+    firstAidDisclaimer = "केवळ शैक्षणिक वैद्यकीय सल्ला. गुड समेरिटन मदत कायदेशीररित्या सुरक्षित आहे.",
+    capturePhoto = "अपघातस्थळाचा फोटो घ्या",
+    photoCaptured = "अपघातस्थळाचा फोटो घेतला",
+    nearbyHospitalsTitle = "जवळचे ट्रॉमा सेंटर (अलर्ट करण्यासाठी निवडा)"
 )
 
 fun stringsFor(languageCode: String): AppStrings = when (languageCode) {

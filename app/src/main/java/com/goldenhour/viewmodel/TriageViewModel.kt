@@ -58,6 +58,10 @@ class TriageViewModel @Inject constructor(
         save(_triage.value.copy(sceneReport = report.take(500)))
     }
 
+    fun updateScenePhoto(bitmap: android.graphics.Bitmap) {
+        save(_triage.value.copy(scenePhoto = bitmap))
+    }
+
     fun toggleVoiceSimulation() {
         if (_isListening.value) {
             voiceSimulationJob?.cancel()
